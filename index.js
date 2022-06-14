@@ -27,14 +27,32 @@ function delayRoundBorder(){
 }
 
 function callback(){
-    div.style.width = "50px";
-    div.style.height = "50px";
-    div.style.backgroundColor = "aqua";
+    setTimeout(()=>{
+        div.style.width = "50px";
+        div.style.height = "50px";
+        div.style.backgroundColor = "aqua";
+    }, Number(delay.value) * 1000*2)
+    
 }
 
-grow.addEventListener('click',  delayExpand)
-reduce.addEventListener('click', delayShrink)
-round.addEventListener('click', delayRoundBorder)
+
+
+grow.addEventListener('click', (event)=>{
+    event.preventDefault();
+    delayExpand();
+    callback();    
+})
+reduce.addEventListener('click', (event)=>{
+    event.preventDefault();
+    delayShrink();
+    callback()
+})
+round.addEventListener('click', (event)=>{
+    event.preventDefault();
+    delayRoundBorder();
+    callback()
+})
+
 
 
 // Promises
